@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 class Package(models.Model):
     p_id = models.AutoField(primary_key=True) #customed primary key
