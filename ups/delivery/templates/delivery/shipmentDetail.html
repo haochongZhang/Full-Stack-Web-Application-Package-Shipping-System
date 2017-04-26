@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Tracking Number: {{shipment.s_name}}</h2>
+    <br/>
+    <h3>Shipment Status:</h3>
+    <br/>
+    <h3>{{shipment.status}}</h3>
+    <br/>
+    <h3>Shipping Address: ({{shipment.dest_addr_x}}, {{shipment.dest_addr_y}})</h3>
+    <br/>
+    <br/>
+    <h3>This shipment has following items</h3>
+    <br/>
+    {% for item in item_set %}
+        {{item.item_name}}
+        <br/>
+        Number : {{item.count}}
+        <br/>
+    {% endfor %}
+{% endblock %}
+
