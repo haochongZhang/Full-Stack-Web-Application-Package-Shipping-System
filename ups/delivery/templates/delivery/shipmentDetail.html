@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Tracking Number: {{shipment.s_name}}</h2>
+    <h2>{{shipment.shipment_name}}</h2>
     <br/>
-    <h3>Shipment Status:</h3>
+    <h3>Tracking Number: {{shipment.shipment_id}}</h3>
+    <h3>Shipment Status: </h3>
+    <h4>{{shipment.status}}</h4>
     <br/>
-    <h3>{{shipment.status}}</h3>
-    <br/>
-    <h3>Shipping Address: ({{shipment.dest_addr_x}}, {{shipment.dest_addr_y}})</h3>
-    <br/>
+    <h3>Shipping Address: </h3>
+    <h4>({{shipment.dest_addr_x}}, {{shipment.dest_addr_y}})</h4>
     <br/>
     <h3>This shipment has following items</h3>
     <br/>

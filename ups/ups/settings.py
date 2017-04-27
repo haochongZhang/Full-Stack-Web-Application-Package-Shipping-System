@@ -25,7 +25,7 @@ SECRET_KEY = 'uqg(gw2nptzon_6&@%x-ukuk-j9ga0ymfy%+4w*)^iruhb3t7s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['colab-sbx-pvt-14.oit.duke.edu']
 
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'ups.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

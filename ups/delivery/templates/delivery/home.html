@@ -3,12 +3,13 @@
     {% if error %}
         <h1>{{error}}</h1>
     {% endif %}
+    <h1>UPS Homepage</h1>
     <br />
-    <br />
-    <br />
-    <br />
-    <form method="POST" action="{% url ''%}">
-        <input type="text" name="s_id" />
-        <input class="btn btn-primary" type="search" value="Search" />
+    <form method="POST" action="{% url 'home'%}">
+      {% csrf_token %}
+      
+      <h3>Search for shipment via tracking number:</h3>
+      <input type="text" name="s_id" />
+      <input class="btn btn-primary" type="submit" value="Search" />
     </form>
 {% endblock %}

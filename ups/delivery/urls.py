@@ -4,5 +4,5 @@ app_name = "delivery"
 
 
 urlpatterns = [
-
+    url(r'^searchShipment/', views.searchShipment, name='searchShipment'),
 ]
