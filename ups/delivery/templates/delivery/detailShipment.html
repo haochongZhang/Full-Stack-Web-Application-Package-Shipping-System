@@ -1,20 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
+    <script>
+        function editAddr(){
+            var addrDiv = document.getElementById("addr");
+            var newxAddr = document.createElement("input");
+            newxAddr.setAttribute("type", "text");
+            newxAddr.setAttribute("name", "xAddr");
+            var newyAddr = document.createElement("input");
+            newyAddr.setAttribute("type", "text");
+            newyAddr.setAttribute("name", "yAddr");
+            var addrText = document.createTextNode("new address:");
+            addrDiv.appendChild(addrText);
+            addrDiv.appendChild(newxAddr);
+            addrDiv.appendChild(newyAddr);
+            addrDiv.appendChild(document.createElement("br"));
+        }
+
+    </script>
     <h2>Shipment details of: {{shipment.shipment_name}}</h2>
     <h3>Tracking Number: </h3>
     <h4>{{shipment.shipment_id}}</h4>
     <h3>Shipment Status: </h3>
     <h4>{{shipment.status}}</h4>
     <br/>
-    <h4>Shipping address: ({{shipment.dest_addr_x}}, {{shipment.dest_addr_y}})</h4>
-    <h4>Shipped by truck: truck id {{shipment.truck.truck_id}}</h4>
-    <br/>
-    <h3>This shipment has following items</h3>
-    <br/>
-    {% for item in item_set %}
+    <form method="POST" action="{% url 'delivery/overviewShipment' %}">
+        {% csrf_token %}
+        <div id="addr">
+            <h4>Shipping address: ({{shipment.dest_addr_x}}, {{shipment.dest_addr_y}})</h4>
+            <button type="button" onclick="editAddr()">Change shipping address</button>
+        </div>
+        <h4>Shipped by truck: truck id {{shipment.truck.truck_id}}</h4>
+        <br/>
+        <h3>This shipment has following items</h3>
+        <br/>
+        {% for item in item_set %}
         {{item.item_name}}
-        <br/>
-        Number : {{item.count}}
-        <br/>
-    {% endfor %}
+            <br/>
+            Number : {{item.count}}
+            <br/>
+        {% endfor %}
+
+        <input class="btn btn-primary" type="submit" value="Submit"/>
+    </form>
 {% endblock %}

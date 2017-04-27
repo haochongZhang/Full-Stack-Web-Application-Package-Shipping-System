@@ -39,10 +39,17 @@ def overviewShipment(request):
 
 @login_required
 def detailShipment(request, pk):
-    if Shipment.objects.filter(shipment_id=pk).exists() and request.user.is_authenticated():
-        shipment = Shipment.objects.get(shipment_id=pk)
-        item_set = shipment.item_set.all()
-        return render(request, "delivery/detailShipment.html", {"shipment":shipment, "item_set":item_set})
+    if request.method == "POST":
+        if request.POST["xAddr"] and request.POST["yAddr"]:
+            shipment = Shipment.objects.get(shipment_id=pk)
+            shipment.dest_addr_x = request.POST["xAddr"]
+            shipment.dest_addr_y = request.POST["yAddr"]
+            #shipment.save()
+            return redirect("delivery/overviewShipment")
     else:
-        return redirect("Login")
-
+        if Shipment.objects.filter(shipment_id=pk).exists() and request.user.is_authenticated():
+            shipment = Shipment.objects.get(shipment_id=pk)
+            item_set = shipment.item_set.all()
+            return render(request, "delivery/detailShipment.html", {"shipment":shipment, "item_set":item_set})
+        else:
+            return redirect("accounts/Login")
