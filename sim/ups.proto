@@ -1,3 +1,5 @@
+syntax = "proto2";
+
 message UConnect {
   optional int64 reconnectid = 1;
   optional int32 numtrucksinit = 2;
