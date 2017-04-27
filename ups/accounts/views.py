@@ -31,7 +31,7 @@ def Login(request):
             login(request, user)
             if 'next' in request.POST:
                 return redirect(request.POST["next"])
-            return redirect('home')
+            return redirect("delivery/overviewShipment")
         else:
             return render(request, "accounts/login.html", {"message": "user or password incorrect"})
     else:

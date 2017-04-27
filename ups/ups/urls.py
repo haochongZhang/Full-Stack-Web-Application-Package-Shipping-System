@@ -18,7 +18,7 @@ from django.contrib import admin
 from delivery import views
 
 urlpatterns = [
-    url(r'^$,,', views.home, name="home"),
+    url(r'^$', views.home, name="home"),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include("accounts.urls")),
     url(r'^delivery/', include("delivery.urls")),
