@@ -14,8 +14,8 @@ class Truck(models.Model):
         return self.truck_id    #???
 
 class Shipment(models.Model):
-    s_id = models.AutoField(primary_key=True) #customed primary key
-    s_name = models.CharField(max_length=100)
+    shipment_id = models.AutoField(primary_key=True) #customed primary key
+    shipment_id = models.CharField(max_length=100)
     status = models.CharField(max_length=20) 
     dest_addr_x = models.IntegerField()
     dest_addr_y = models.IntegerField()
@@ -29,7 +29,7 @@ class Item(models.Model):
     item_id = models.AutoField(primary_key=True) #customed primary key  
     item_name = models.CharField(max_length=100)
     count = models.IntegerField()
-    package = models.ForeignKey(Shipment, on_delete=models.CASCADE)
+    shipment = models.ForeignKey(Shipment, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.item_name
