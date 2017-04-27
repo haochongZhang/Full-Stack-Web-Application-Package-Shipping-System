@@ -23,7 +23,7 @@
     <h3>Shipment Status: </h3>
     <h4>{{shipment.status}}</h4>
     <br/>
-    <form method="POST" action="{% url 'delivery/overviewShipment' %}">
+    <form method="POST" action="{% url 'delivery:detailShipment' shipment.shipment_id%}">
         {% csrf_token %}
         <div id="addr">
             <h4>Shipping address: ({{shipment.dest_addr_x}}, {{shipment.dest_addr_y}})</h4>
