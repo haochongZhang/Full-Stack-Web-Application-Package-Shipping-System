@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Shipment, Item
 
@@ -27,3 +27,22 @@ def searchShipment(request):
         return render(request, "delivery/home.html")
     else:
         return render(request, "delivery/shipmentDetail.html")
+
+@login_required
+def overviewShipment(request):
+    if request.user.is_authenticated():
+        # get all related shipment of the user
+        shipments = request.user.shipment_set.all()
+        return render(request, "delivery/overviewShipment.html", {"shipments":shipments})
+    else:
+        return redirect("Login")
+
+@login_required
+def detailShipment(request, pk):
+    if Shipment.objects.filter(shipment_id=pk).exists() and request.user.is_authenticated():
+        shipment = Shipment.objects.get(shipment_id=pk)
+        item_set = shipment.item_set.all()
+        return render(request, "delivery/detailShipment.html", {"shipment":shipment, "item_set":item_set})
+    else:
+        return redirect("Login")
+

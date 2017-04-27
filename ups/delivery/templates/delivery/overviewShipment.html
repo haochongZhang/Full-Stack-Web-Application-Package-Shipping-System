@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if message %}
+        <h1>{{message}}</h1>
+    {% endif %}
+    <br />
+    <h2>Welcome {{shipment.user.username}}</h2>
+    <br />
+    <h4>your recent shipment:</h4>
+    {% for shipment in shipments %}
+
+        <a href="{%url 'delivery:detailShipment' shipment.shipment_id"><h4>{{shipment.shipment_name}}</h4></a>
+        <h4>status: {{shipment.status}}</h4>
+        <br />
+        <br />
+
+    {% endfor %}}
+{% endblock %}
