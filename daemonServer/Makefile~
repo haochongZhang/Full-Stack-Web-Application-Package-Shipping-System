@@ -1,0 +1,2 @@
+interactor: interator.cpp ups.pb.cc
+	g++ -g interator.cpp -o interator --std=gnu++11 -pthread -lprotobuf -lpthread
