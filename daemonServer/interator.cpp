@@ -78,7 +78,7 @@ void socketInit(){
 
   /* construct message */
   UConnect command;
-  command.set_reconnectid(1001);
+  command.set_reconnectid(1000);
 
   /* serialize and encode */
   int msg_size = command.ByteSize();
